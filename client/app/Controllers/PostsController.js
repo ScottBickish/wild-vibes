@@ -8,7 +8,8 @@ function _drawPosts() {
 
 export class PostsController {
   constructor() {
-    ProxyState.on('posts', _drawPosts)
+    // ProxyState.on('posts', _drawPosts)
+    this.getAllPosts()
   }
 
   async getAllPosts() {
