@@ -6,6 +6,10 @@ class PostsService {
     const res = await api.get('api/wildvibes/posts')
     logger.log(res.data)
   }
+
+  async createPost(data) {
+    const res = await api.post('api/wildvibes/posts', data)
+  }
 }
 
 export const postsService = new PostsService()

@@ -11,7 +11,11 @@ export class PostsController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:id', this.edit)
+<<<<<<< HEAD
       .delete('/:id', this.remove)
+=======
+      // .delete()
+>>>>>>> ebc2afb2a8b38decf24e6ae272cbac16b106a623
   }
 
   async getAll(req, res, next) {
