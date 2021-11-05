@@ -16,16 +16,25 @@ class PostsService {
 
   async create(body) {
     // REVIEW do you want a populate here?
-    return await dbContext.Posts.create(body)
+    const newPost = await dbContext.Posts.create(body)
+    return newPost.populate('creator', 'name')
   }
 
   async edit(body) {
     const post = await this.getById(body.id)
     if (post.creatorId.toString() !== body.creatorId) {
-      throw new Forbidden('you do not have the credentials')
+      throw new Forbidden('you do not have the credentials to edit this post')
     }
     const updatedPost = dbContext.Posts.findOneAndUpdate({ _id: body.id, creatorId: body.creatorId }, body, { new: true })
     return updatedPost
+  }
+
+  async remove(postId, userId) {
+    const post = await this.getById(postId)
+    if (post.creatorId.toString() !== userId) {
+      throw new Forbidden('you do not have the credentials to delete this post')
+    }
+    await dbContext.Posts.findByIdAndDelete(postId)
   }
 }
 export const postsService = new PostsService()
