@@ -6,6 +6,7 @@ export class Post {
     this.imgUrl = data.imgUrl
     this.like = data.like
     this.dislike = data.dislike
+    this.gmapUrl = data.gmapUrl
     this.creatorName = data.creator.name // what did they use??
   }
 
