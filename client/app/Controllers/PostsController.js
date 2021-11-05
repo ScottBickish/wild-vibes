@@ -20,6 +20,7 @@ export class PostsController {
 
   // async createPost() {
   //   try {
+  // prevant default
   //     const formElem = window.event.target
   //     const newPost = {
   //       title: formElem.title.value,
@@ -27,7 +28,7 @@ export class PostsController {
   //       imgUrl: formElem.imgUrl.value,
   //       like: formElem.like.value,
   //       dislike: formElem.like.value,
-  //       gmapUrl: formElem.gmapUrl
+  //       //gmapUrl: formElem.gmapUrl
   //     }
   //     await postsService.creatPost(newPost)
   //     formElem.reset()

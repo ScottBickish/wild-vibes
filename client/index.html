@@ -43,17 +43,101 @@
         </div>
         <div class="col-10">
           <div class="row">
-            <div class="col-7">
-              <div class="card">
-
+            <div class="col-8">
+              <div class="card shadow m-5">
+                <form onsubmit="app.postsController.createPost()">
+                  <div class="d-flex">
+                    <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
+                      placeholder="Enter your title..." name="Enter your title..." value="">
+                    <label for="floatingInputValue"></label>
+                    <input type="text" class="form-control m-3 ms-3 me-4" id="floatingInputValue"
+                      placeholder="Image URL here... (Optional) " name="Enter your title..." value="">
+                    <label for="floatingInputValue"></label>
+                  </div>
+                  <div class="m-3 me-4">
+                    <div class="form-floating">
+                      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                        style="height: 100px"></textarea>
+                      <label for="floatingTextarea2">Enter your discussion here...</label>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <button class="btn shadow buttonpost me-3 mb-2">Post</button>
+                  </div>
+                </form>
               </div>
             </div>
+            <div class="col-4">
+              <img class="mt-5" src="./assets/img/Untitled.png" height="250vh" alt="">
+            </div>
           </div>
-          <div class="col-5">
+          <div class="row justify-content-center">
+            <div class="col-10">
+              <div class="card p-3">
+                <div>
+                  <h4 class=" mb-0">Post Title</h4>
+                  <p class="fst-italic text-secondary lighten-15 ">Posted by: UserName</p>
+                  <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and
+                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap
+                    into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                    the
+                    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing
+                    software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+                <div class="d-flex pt-2 align-items-center">
 
-          </div>
-          <div class="col-10">
-
+                  <button class="btn likedislike">
+                    <i class="mdi mdi-thumb-up  px-2"> Like</i>
+                  </button>
+                  <div class="arrowleft ps-3 p-1 me-3">
+                    13
+                  </div>
+                  <div class="arrowright ps-3 pe-1 p-1 ms-3">
+                    2
+                  </div>
+                  <button class="btn likedislike">
+                    <i class=" mdi  mdi-thumb-down ">Dislike</i>
+                  </button>
+                </div>
+                <div class="text-end">
+                  <p>
+                    <a class="btn commentsbutton" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                      aria-expanded="false" aria-controls="collapseExample">
+                      View comments...
+                    </a>
+                  </p>
+                  <div class="collapse" id="collapseExample">
+                    <div class="card commentsbutton text-start shadow p-3 mb-4">
+                      <h6 class=" mb-1">User1234 Says...</h6>
+                      <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                        been
+                        the
+                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                        type
+                        and
+                        scrambled it to make a type specimen book. </p>
+                    </div>
+                    <div class="collapse" id="collapseExample">
+                      <div class="card commentsbutton text-start shadow p-3 mb-4 mb-1">
+                        <h6 class=" mb-1">You Commented</h6>
+                        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                          been
+                          the
+                          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                          type
+                          and
+                          scrambled it to make a type specimen book. </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

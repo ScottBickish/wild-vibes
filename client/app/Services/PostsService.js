@@ -12,15 +12,15 @@ class PostsService {
     logger.log(res.data)
   }
 
-//   async editPost(neData) {
-//     const res = await api.put('api/wildvibes/posts' + id, newData)
-//     logger.log(res.data)
-//   }
+  //   async editPost(neData) {
+  //     const res = await api.put('api/wildvibes/posts' + id, newData)
+  //     logger.log(res.data)
+  //   }
 
 //   async deletePost(id) {
 //     const res = await api.remove('api/wildvibes/posts' + id)
 //     logger.log(res.data)
 //   }
-// }
+}
 
 export const postsService = new PostsService()
