@@ -14094,7 +14094,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #e5e5e5;
+  background-color: #EAE0CC;
 }
 
 main {
@@ -14113,6 +14113,31 @@ main {
 
 .transparentsort {
   background-color: #f3f3f377;
+}
+
+.buttonpost {
+  background-color: #627264;
+  color: white;
+}
+
+.likedislike {
+  background-color: #A1CDA8;
+}
+
+.arrowleft {
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+  background-color: #d6d6d6;
+  min-width: 2.5em;
+}
+
+.arrowright {
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  background-color: #d6d6d6;
+  min-width: 2.5em;
+}
+
+.commentsbutton {
+  background-color: rgba(200, 200, 200, 0.671);
 }
 
 /*# sourceMappingURL=main.css.map */
