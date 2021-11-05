@@ -1,15 +1,13 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { commentsService } from '../services/CommentsService'
-import { postsService } from '../services/PostsService'
 import BaseController from '../utils/BaseController'
 
-export class PostsController extends BaseController {
+export class CommentsController extends BaseController {
   constructor() {
-    super('api/wildvibes/posts')
+    super('api/wildvibes/comments')
     this.router
       .get('', this.getAll)
-      .get('/:id', this.getById)
-      .get('/:id/comments', this.getByPostId)
+      .get('/:id', this.getByCommentId)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:id', this.edit)
@@ -19,26 +17,17 @@ export class PostsController extends BaseController {
   async getAll(req, res, next) {
     try {
       const query = req.query
-      const posts = await postsService.getAll(query)
-      return res.send(posts)
-    } catch (error) {
-      next(error)
-    }
-  }
-
-  async getById(req, res, next) {
-    try {
-      const post = await postsService.getById(req.params.id)
-      return res.send(post)
-    } catch (error) {
-      next(error)
-    }
-  }
-
-  async getByPostId(req, res, next) {
-    try {
-      const comments = await commentsService.getByPostId(req.params.id)
+      const comments = await commentsService.getAll(query)
       return res.send(comments)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getByCommentId(req, res, next) {
+    try {
+      const comment = await commentsService.getByCommentId(req.params.id)
+      return res.send(comment)
     } catch (error) {
       next(error)
     }
@@ -47,8 +36,8 @@ export class PostsController extends BaseController {
   async create(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const post = await postsService.create(req.body)
-      return res.send(post)
+      const comment = await commentsService.create(req.body)
+      return res.send(comment)
     } catch (error) {
       next(error)
     }
@@ -58,7 +47,7 @@ export class PostsController extends BaseController {
     try {
       req.body.creatorId = req.userInfo.id
       req.body.id = req.params.id
-      const post = await postsService.edit(req.body)
+      const post = await commentsService.edit(req.body)
       return res.send(post)
     } catch (error) {
       next(error)
@@ -68,9 +57,9 @@ export class PostsController extends BaseController {
   async remove(req, res, next) {
     try {
       const userId = req.userInfo.id
-      const postId = req.params.id
-      await postsService.remove(postId, userId)
-      res.send('you have deleted this post forever')
+      const commentId = req.params.id
+      await commentsService.remove(commentId, userId)
+      res.send('you have deleted this comment forever')
     } catch (error) {
       next(error)
     }
