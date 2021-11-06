@@ -14,6 +14,7 @@ class CommentsService {
     const res = await api.post('api/wildvibes/comments', data)
     ProxyState.comments = [new Comment(res.data), ...ProxyState.comments]
     logger.log('create comment', res.data)
+    return res.data.postId
   }
 
   //   async editcomment(neData) {

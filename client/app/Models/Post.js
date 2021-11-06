@@ -54,7 +54,7 @@ export class Post {
         </p>
         <div class="collapse " id="a${this.id}a">
 ${this.getComments()}
-          <div class="collapse" id="a${this.id}a">
+          
             <div class="me-5 mt-3  m-2">
             <form onsubmit="app.commentsController.createComment('${this.id}')">
               <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
@@ -62,7 +62,7 @@ ${this.getComments()}
               <label for="floatingInputValue"></label>
               </form>
             </div>
-          </div>
+         
         </div>
       </div>
     </div>

@@ -24,9 +24,14 @@ export class CommentsController {
         comment: formElem.comment.value,
         postId: postId
       }
-      await commentsService.createComment(newComment)
+      const id = await commentsService.createComment(newComment)
+
       // @ts-ignore
       formElem.reset()
+
+      const myCollapse = document.getElementById('a' + id + 'a')
+      const bsCollapse = new bootstrap.Collapse(myCollapse)
+      bsCollapse.show()
     } catch (error) {
       logger.error('[error]', error)
     }
