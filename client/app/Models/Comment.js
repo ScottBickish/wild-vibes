@@ -13,7 +13,7 @@ export class Comment {
       <h6 class=" mb-1">${this.creatorName} commented:</h6>
       <div>
         <i class=" selectable mdi m-1 mdi-pencil "></i>
-        <i class="m-1 mdi selectable mdi-trash-can "></i>
+        <i onclick="app.commentsController.deleteComment('${this.id}')" class="m-1 mdi selectable mdi-trash-can "></i>
       </div>
     </div>
     <p> ${this.comment} </p>
