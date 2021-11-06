@@ -17,6 +17,11 @@ export class Post {
       <div>
         <h4 class=" mb-0">${this.title}</h4>
         <p class="fst-italic text-secondary lighten-15 ">Posted by: UserName</p>
+        <div class="d-flex justify-content-center mb-4">
+                    <img class="rounded shadow" width="85%"
+                      src="${this.imgUrl}"
+                      alt="">
+                  </div>
         <p> ${this.discussion}</p>
       </div>
       <div class="d-flex pt-2 align-items-center">
