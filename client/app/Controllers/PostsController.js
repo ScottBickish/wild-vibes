@@ -6,15 +6,15 @@ function _drawPosts() {
   let template = ''
   const sort = ProxyState.sort
   if (sort === 0) {
-    ProxyState.posts.sort(function(a, b) {
+    ProxyState.posts.sort(function (a, b) {
       return b.like - a.like
     })
   } else if (sort === 1) {
-    ProxyState.posts.sort(function(a, b) {
+    ProxyState.posts.sort(function (a, b) {
       return a.like - b.like
     })
   } else if (sort === 2) {
-    ProxyState.posts.sort(function(a, b) {
+    ProxyState.posts.sort(function (a, b) {
       return b.serial - a.serial
     })
   }
@@ -60,7 +60,7 @@ export class PostsController {
       window.event.preventDefault()
       const formElem = window.event.target
       let last = 0
-      ProxyState.posts.sort(function(a, b) {
+      ProxyState.posts.sort(function (a, b) {
         return a.serial - b.serial
       })
       for (let i = 0; i < ProxyState.posts.length; i++) {
@@ -70,9 +70,9 @@ export class PostsController {
         title: formElem.title.value,
         discussion: formElem.discussion.value,
         imgUrl: formElem.imgUrl.value,
+        gmapUrl: formElem.gmapUrl.value,
         serial: last + 1
         // dislike: formElem.like.value
-        // gmapUrl: formElem.gmapUrl
       }
       await postsService.createPost(newPost)
       formElem.reset()

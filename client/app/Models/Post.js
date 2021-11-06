@@ -12,6 +12,7 @@ export class Post {
     this.creatorId = data.creatorId
     this.createdAt = data.createdAt
     this.serial = data.serial
+    this.gmapUrl = data.gmapUrl
   }
 
   get Template() {
@@ -24,11 +25,13 @@ export class Post {
       <i onclick="app.postsController.deletePost('${this.id}')" class="mdi selectable2 grow ${ProxyState.account.id === this.creatorId ? '' : 'visually-hidden'} mdi-24px mdi-close-thick me-2"></i>
     </div>
         <p class="fst-italic text-secondary lighten-15 ">Posted by: ${this.creatorName}</p>
+        <div class="text-end pe-2">
+        <a href="${this.gmapUrl}" target="_blank">
+          link to Google Maps</a>
+      </div>
         <div class="d-flex justify-content-center mb-4">
-                    <img class="rounded shadow" width="85%"
-                      src="${this.imgUrl}"
-                      alt="">
-                  </div>
+          <img class="rounded shadow" width="85%" src="${this.imgUrl}" alt="">
+        </div>
         <p> ${this.discussion}</p>
       </div>
       <div class="d-flex pt-2 align-items-center">
