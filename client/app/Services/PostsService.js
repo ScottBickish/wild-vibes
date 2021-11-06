@@ -11,6 +11,7 @@ class PostsService {
 
   async createPost(data) {
     const res = await api.post('api/wildvibes/posts', data)
+    ProxyState.posts = new Post(res.data)
     logger.log(res.data)
   }
 
