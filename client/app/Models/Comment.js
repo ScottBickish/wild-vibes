@@ -14,7 +14,7 @@ export class Comment {
     <div class="d-flex justify-content-between">
       <h6 class=" mb-1">${this.creatorName} commented:</h6>
       <div>
-        <i class=" selectable mdi m-1 mdi-pencil "></i>
+     
         <i onclick="app.commentsController.deleteComment('${this.id}')" class="m-1 mdi selectable mdi-trash-can ${ProxyState.account.id === this.creatorId ? '' : 'visually-hidden'} "></i>
       </div>
     </div>
@@ -23,3 +23,4 @@ export class Comment {
     `
   }
 }
+// <i class=" selectable mdi m-1 mdi-pencil "></i>
