@@ -13,6 +13,10 @@ function _drawPosts() {
     ProxyState.posts.sort(function(a, b) {
       return a.like - b.like
     })
+  } else if (sort === 2) {
+    ProxyState.posts.sort(function(a, b) {
+      return b.serial - a.serial
+    })
   }
   ProxyState.posts.forEach(post => { template += post.Template })
   document.getElementById('post').innerHTML = template
@@ -45,7 +49,7 @@ export class PostsController {
   async getAllPosts() {
     try {
       const posts = await postsService.getAllPosts()
-      logger.log(posts)
+      logger.log('posts here', posts)
     } catch (error) {
       console.error(error)
     }
@@ -55,11 +59,18 @@ export class PostsController {
     try {
       window.event.preventDefault()
       const formElem = window.event.target
+      let last = 0
+      ProxyState.posts.sort(function(a, b) {
+        return a.serial - b.serial
+      })
+      for (let i = 0; i < ProxyState.posts.length; i++) {
+        last = ProxyState.posts[i].serial
+      }
       const newPost = {
         title: formElem.title.value,
         discussion: formElem.discussion.value,
-        imgUrl: formElem.imgUrl.value
-        // like: formElem.like.value,
+        imgUrl: formElem.imgUrl.value,
+        serial: last + 1
         // dislike: formElem.like.value
         // gmapUrl: formElem.gmapUrl
       }
@@ -105,7 +116,7 @@ export class PostsController {
     postsService.mostDisliked()
   }
 
-  // mostRecent() {
-  //   postsService.mostRecent()
-  // }
+  mostRecent() {
+    postsService.mostRecent()
+  }
 }

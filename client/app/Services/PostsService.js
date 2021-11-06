@@ -7,6 +7,7 @@ class PostsService {
   async getAllPosts() {
     const res = await api.get('api/wildvibes/posts')
     ProxyState.posts = res.data.map(p => new Post(p))
+    return ProxyState.posts
   }
 
   async createPost(data) {
@@ -54,9 +55,9 @@ class PostsService {
     ProxyState.sort = 1
   }
 
-  // mostRecent() {
-  //   ProxyState.sort = 2
-  // }
+  mostRecent() {
+    ProxyState.sort = 2
+  }
 }
 
 export const postsService = new PostsService()

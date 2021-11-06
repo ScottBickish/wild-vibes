@@ -8,10 +8,10 @@ export class Post {
     this.imgUrl = data.imgUrl || ''
     this.like = data.like
     this.dislike = data.dislike
-    // this.gmapUrl = data.gmapUrl
     this.creatorName = data.creator.name
     this.creatorId = data.creatorId
     this.createdAt = data.createdAt
+    this.serial = data.serial
   }
 
   get Template() {
