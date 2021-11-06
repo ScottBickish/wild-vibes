@@ -21,7 +21,7 @@ export class Post {
       </div>
       <div class="d-flex pt-2 align-items-center">
 
-        <button class="btn me-1 grow likedislike">
+        <button class="btn me-1 grow likedislike" onclick="app.postsController.like('${this.id}')">
           <i class=" mdi mdi-thumb-up px-2"> Like</i>
         </button>
         <div class="arrowleft ps-3 p-1 me-3">
@@ -30,7 +30,7 @@ export class Post {
         <div class="arrowright ps-3 pe-1 p-1 ms-3">
           ${this.dislike}
         </div>
-        <button class="btn ms-1 grow likedislike">
+        <button class="btn ms-1 grow likedislike" onclick="app.postsController.dislike('${this.id}')">
           <i class=" mdi   mdi-thumb-down ">Dislike</i>
         </button>
       </div>

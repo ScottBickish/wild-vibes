@@ -7,8 +7,8 @@ export const PostSchema = new Schema({
   imgUrl: { type: String },
   gmapUrl: { type: String },
   discussion: { type: String, required: true },
-  like: { type: Number, default: 0 },
-  dislike: { type: Number, default: 0 }
+  like: { type: Boolean, default: false },
+  dislike: { type: Boolean, default: false }
 },
 { timestamps: true, toJSON: { virtuals: true } })
 
