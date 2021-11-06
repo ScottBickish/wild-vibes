@@ -10,9 +10,9 @@ export class PostsController extends BaseController {
       .get('', this.getAll)
       .get('/:id', this.getById)
       .get('/:id/comments', this.getByPostId)
+      .put('/:id/like', this.like)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
-      .put('/:id', this.edit)
       .delete('/:id', this.remove)
   }
 
@@ -54,11 +54,11 @@ export class PostsController extends BaseController {
     }
   }
 
-  async edit(req, res, next) {
+  async like(req, res, next) {
     try {
-      req.body.creatorId = req.userInfo.id
+      // req.body.creatorId = req.userInfo.id
       req.body.id = req.params.id
-      const post = await postsService.edit(req.body)
+      const post = await postsService.like(req.body)
       return res.send(post)
     } catch (error) {
       next(error)

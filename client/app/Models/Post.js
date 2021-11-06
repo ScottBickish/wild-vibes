@@ -1,8 +1,5 @@
 import { ProxyState } from '../AppState.js'
-<<<<<<< HEAD
-=======
 
->>>>>>> ac37edaf72251269a5f927160e4220a4d539f626
 export class Post {
   constructor(data) {
     this.id = data.id

@@ -29,8 +29,8 @@ class PostsService {
 
   async like(id) {
     const post = ProxyState.posts.find(p => p.id === id)
-    post.like++
-    const res = await api.put('api/wildvibes/posts/' + id, post)
+    const res = await api.put('api/wildvibes/posts/' + id + '/like', post)
+    logger.log(res.data)
     const index = ProxyState.posts.findIndex(p => p.id === id)
     ProxyState.posts.splice(index, 1, new Post(res.data))
     // eslint-disable-next-line no-self-assign
