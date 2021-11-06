@@ -22,10 +22,10 @@ class CommentsService {
   //     logger.log(res.data)
   //   }
 
-  //   async deletecomment(id) {
-  //     const res = await api.remove('api/wildvibes/comments' + id)
-  //     logger.log(res.data)
-  //   }
+  async deleteComment(id) {
+    const res = await api.remove('api/wildvibes/comments' + id)
+    logger.log(res.data)
+  }
 }
 
 export const commentsService = new CommentsService()

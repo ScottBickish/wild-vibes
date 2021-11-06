@@ -36,4 +36,12 @@ export class CommentsController {
       logger.error('[error]', error)
     }
   }
+
+  async deleteComment(id) {
+    try {
+      await commentsService.deleteComment()
+    } catch (error) {
+      logger.error('[error]', error)
+    }
+  }
 }
