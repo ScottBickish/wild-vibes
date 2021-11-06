@@ -1,3 +1,4 @@
+import { ProxyState } from '../AppState.js'
 export class Post {
   constructor(data) {
     this.id = data.id
@@ -47,7 +48,7 @@ export class Post {
           </a>
         </p>
         <div class="collapse" id="${this.id}">
-
+${this.getComments()}
           <div class="collapse" id="${this.id}">
             <div class="me-5 mt-3  m-2">
               <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
@@ -60,5 +61,12 @@ export class Post {
     </div>
   </div>
     `
+  }
+
+  getComments() {
+    const comments = ProxyState.comments.filter(c => this.id === c.postId)
+    let template = ''
+    comments.forEach(c => { template += c.Template })
+    return template
   }
 }
