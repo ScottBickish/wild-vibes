@@ -23,8 +23,11 @@ class CommentsService {
   //   }
 
   async deleteComment(id) {
-    const res = await api.remove('api/wildvibes/comments' + id)
-    logger.log(res.data)
+    const found = ProxyState.comments.find(c => c.id === id)
+    const postid = found.postId
+    await api.delete('api/wildvibes/comments/' + id)
+    this.getAllComments()
+    return postid
   }
 }
 
