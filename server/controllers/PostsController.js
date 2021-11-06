@@ -11,6 +11,7 @@ export class PostsController extends BaseController {
       .get('/:id', this.getById)
       .get('/:id/comments', this.getByPostId)
       .put('/:id/like', this.like)
+      .put('/:id/dislike', this.dislike)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .delete('/:id', this.remove)
@@ -59,6 +60,17 @@ export class PostsController extends BaseController {
       // req.body.creatorId = req.userInfo.id
       req.body.id = req.params.id
       const post = await postsService.like(req.body)
+      return res.send(post)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async dislike(req, res, next) {
+    try {
+      // req.body.creatorId = req.userInfo.id
+      req.body.id = req.params.id
+      const post = await postsService.dislike(req.body)
       return res.send(post)
     } catch (error) {
       next(error)

@@ -36,6 +36,16 @@ class PostsService {
     // eslint-disable-next-line no-self-assign
     ProxyState.posts = ProxyState.posts
   }
+
+  async dislike(id) {
+    const post = ProxyState.posts.find(p => p.id === id)
+    const res = await api.put('api/wildvibes/posts/' + id + '/dislike', post)
+    logger.log(res.data)
+    const index = ProxyState.posts.findIndex(p => p.id === id)
+    ProxyState.posts.splice(index, 1, new Post(res.data))
+    // eslint-disable-next-line no-self-assign
+    ProxyState.posts = ProxyState.posts
+  }
 }
 
 export const postsService = new PostsService()

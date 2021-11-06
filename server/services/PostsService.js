@@ -30,6 +30,16 @@ class PostsService {
     return await updatedPost.populate('creator', 'name')
   }
 
+  async dislike(body) {
+    const post = await this.getById(body.id)
+    // if (post.creatorId.toString() !== body.creatorId) {
+    //   throw new Forbidden('you do not have the credentials to edit this post')
+    // }
+    post.dislike++
+    const updatedPost = dbContext.Posts.findOneAndUpdate({ _id: body.id }, post, { new: true })
+    return await updatedPost.populate('creator', 'name')
+  }
+
   async remove(postId, userId) {
     const post = await this.getById(postId)
     if (post.creatorId.toString() !== userId) {

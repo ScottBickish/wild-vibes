@@ -21,6 +21,10 @@ export class PostsController {
     await postsService.like(id)
   }
 
+  async dislike(id) {
+    await postsService.dislike(id)
+  }
+
   async getAllPosts() {
     try {
       const posts = await postsService.getAllPosts()
