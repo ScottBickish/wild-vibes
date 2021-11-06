@@ -12,7 +12,7 @@ class CommentsService {
 
   async createComment(data) {
     const res = await api.post('api/wildvibes/comments', data)
-    ProxyState.comments = [new Comment(res.data), ...ProxyState.comments]
+    ProxyState.comments = [...ProxyState.comments, new Comment(res.data)]
     logger.log('create comment', res.data)
     return res.data.postId
   }

@@ -11,12 +11,13 @@ export class Post {
     // this.gmapUrl = data.gmapUrl
     this.creatorName = data.creator.name
     this.creatorId = data.creatorId
+    this.createdAt = data.createdAt
   }
 
   get Template() {
     return `
     <div class="col-10">
-    <div id="post" class="card p-3 mb-4">
+    <div id="post" class="card shadow p-3 mb-4">
       <div>
       <div class="d-flex justify-content-between">
       <h4 class=" mb-0">${this.title}</h4>
@@ -32,13 +33,13 @@ export class Post {
       </div>
       <div class="d-flex pt-2 align-items-center">
 
-        <button class="btn me-1 grow likedislike" onclick="app.postsController.like('${this.id}')">
+        <button class="btn  me-1 grow likedislike" onclick="app.postsController.like('${this.id}')">
           <i class=" mdi mdi-thumb-up px-2"> Like</i>
         </button>
-        <div class="arrowleft ps-3 p-1 me-3">
+        <div  class="arrowleft text-center ps-3 p-1 me-3">
           ${this.like}
         </div>
-        <div class="arrowright ps-3 pe-1 p-1 ms-3">
+        <div class="arrowright p-1  text-center">
           ${this.dislike}
         </div>
         <button class="btn ms-1 grow likedislike" onclick="app.postsController.dislike('${this.id}')">

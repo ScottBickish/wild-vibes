@@ -5,9 +5,10 @@ import { logger } from '../Utils/Logger.js'
 
 function _drawCommentsForPost(postId) {
   const comments = ProxyState.comments
+  const found = comments.filter(c => c.postId === postId)
   let template = ''
-  comments.forEach(c => { template += c.Template })
-  template += Post.commentForm(postId)
+  found?.forEach(c => { template += c.Template })
+  template += Post.commentForm(found.postId)
   const myCollapse = document.getElementById('a' + postId + 'a')
   myCollapse.innerHTML = template
 }
@@ -48,8 +49,19 @@ export class CommentsController {
 
   async deleteComment(id) {
     try {
-      const postId = await commentsService.deleteComment(id)
-      _drawCommentsForPost(postId)
+      const result = await Swal.fire({
+        title: 'Delete this Comment?',
+        icon: 'question',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        showCancelButton: true
+      })
+      if (result.isConfirmed) {
+        const postId = await commentsService.deleteComment(id)
+        _drawCommentsForPost(postId)
+      } else {
+
+      }
       // const bsCollapse = new bootstrap.Collapse(myCollapse)
       // bsCollapse.show()
     } catch (error) {

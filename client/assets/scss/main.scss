@@ -40,12 +40,13 @@ main {
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
   background-color:  rgb(214, 214, 214);
   min-width: 2.5em;
-
+  color: #6d6d6d;
 }
 .arrowright{
   clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
   background-color:  rgb(214, 214, 214);
   min-width: 2.5em;
+  color: #6d6d6d;
 }
 .commentsbutton{
   background-color: rgba(200, 200, 200, 0.671);

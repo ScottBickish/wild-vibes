@@ -7,7 +7,6 @@ class PostsService {
   async getAllPosts() {
     const res = await api.get('api/wildvibes/posts')
     ProxyState.posts = res.data.map(p => new Post(p))
-    logger.log(res.data)
   }
 
   async createPost(data) {
@@ -46,6 +45,18 @@ class PostsService {
     // eslint-disable-next-line no-self-assign
     ProxyState.posts = ProxyState.posts
   }
+
+  mostLiked() {
+    ProxyState.sort = 0
+  }
+
+  mostDisliked() {
+    ProxyState.sort = 1
+  }
+
+  // mostRecent() {
+  //   ProxyState.sort = 2
+  // }
 }
 
 export const postsService = new PostsService()

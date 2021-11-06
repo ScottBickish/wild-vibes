@@ -4,20 +4,32 @@ import { logger } from '../Utils/Logger.js'
 
 function _drawPosts() {
   let template = ''
-
+  const sort = ProxyState.sort
+  if (sort === 0) {
+    ProxyState.posts.sort(function(a, b) {
+      return b.like - a.like
+    })
+  } else if (sort === 1) {
+    ProxyState.posts.sort(function(a, b) {
+      return a.like - b.like
+    })
+  }
   ProxyState.posts.forEach(post => { template += post.Template })
   document.getElementById('post').innerHTML = template
 }
+
 // function _drawComments() {
 //   let template = ''
 //   ProxyState.comments.forEach(c => { template += c.Template })
 // }
+// function _drawLikes()
 
 export class PostsController {
   constructor() {
     ProxyState.on('posts', _drawPosts)
     ProxyState.on('account', _drawPosts)
     ProxyState.on('comments', _drawPosts)
+    ProxyState.on('sort', _drawPosts)
 
     this.getAllPosts()
   }
@@ -68,11 +80,32 @@ export class PostsController {
 
   async deletePost(id) {
     try {
-      if (window.confirm('Are you sure you want to delete this Discussion?')) {
+      const result = await Swal.fire({
+        title: 'Delete this Post?',
+        icon: 'question',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        showCancelButton: true
+      })
+      if (result.isConfirmed) {
         await postsService.deletePost(id)
+      } else {
+
       }
     } catch (error) {
       logger.log('[Delete error]', error)
     }
   }
+
+  mostLiked() {
+    postsService.mostLiked()
+  }
+
+  mostDisliked() {
+    postsService.mostDisliked()
+  }
+
+  // mostRecent() {
+  //   postsService.mostRecent()
+  // }
 }

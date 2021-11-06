@@ -14155,12 +14155,14 @@ main {
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
   background-color: #d6d6d6;
   min-width: 2.5em;
+  color: #6d6d6d;
 }
 
 .arrowright {
   clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
   background-color: #d6d6d6;
   min-width: 2.5em;
+  color: #6d6d6d;
 }
 
 .commentsbutton {
