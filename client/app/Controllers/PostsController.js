@@ -12,6 +12,7 @@ function _drawPosts() {
 export class PostsController {
   constructor() {
     ProxyState.on('posts', _drawPosts)
+    ProxyState.on('account', _drawPosts)
     this.getAllPosts()
     // this.createPost()
   }
