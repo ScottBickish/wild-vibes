@@ -6,11 +6,13 @@ import { Post } from '../Models/Post.js'
 class PostsService {
   async getAllPosts() {
     const res = await api.get('api/wildvibes/posts')
+    ProxyState.posts = res.data.map(p => new Post(p))
     logger.log(res.data)
   }
 
   async createPost(data) {
     const res = await api.post('api/wildvibes/posts', data)
+    ProxyState.posts = [new Post(res.data), ...ProxyState.posts]
     logger.log(res.data)
   }
 

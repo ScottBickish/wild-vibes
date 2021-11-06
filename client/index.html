@@ -54,21 +54,21 @@
                 <form onsubmit="app.postsController.createPost()">
                   <div class="d-flex">
                     <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
-                      placeholder="Enter your title..." name="Enter your title..." value="">
+                      placeholder="Enter your title..." name="title" value="">
                     <label for="floatingInputValue"></label>
                     <input type="text" class="form-control m-3 ms-3 me-4" id="floatingInputValue"
-                      placeholder="Image URL here... (Optional) " name="Enter your title..." value="">
+                      placeholder="Image URL here... (Optional) " name="imgUrl" value="">
                     <label for="floatingInputValue"></label>
                   </div>
                   <div class="m-3 me-4">
                     <div class="form-floating">
-                      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                        style="height: 100px"></textarea>
+                      <textarea name="discussion" class="form-control" placeholder="Leave a comment here"
+                        id="floatingTextarea2" style="height: 100px"></textarea>
                       <label for="floatingTextarea2">Enter your discussion here...</label>
                     </div>
                   </div>
                   <div class="text-end">
-                    <button class="btn grow shadow buttonpost me-3 mb-2">Post</button>
+                    <button type="submit" class="btn grow shadow buttonpost me-3 mb-2">Post</button>
                   </div>
                 </form>
               </div>

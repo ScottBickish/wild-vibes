@@ -1,6 +1,5 @@
-import { ProxyState } from '../AppState.js'
-import { commentsService } from "../Services/CommentsService.js"
-import { logger } from "../Utils/Logger.js"
+import { commentsService } from '../Services/CommentsService.js'
+import { logger } from '../Utils/Logger.js'
 
 export class CommentsController {
   constructor() {
