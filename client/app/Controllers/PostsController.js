@@ -2,6 +2,18 @@ import { ProxyState } from '../AppState.js'
 import { postsService } from '../Services/PostsService.js'
 import { logger } from '../Utils/Logger.js'
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
 function _drawPosts() {
   let template = ''
   const sort = ProxyState.sort
@@ -11,7 +23,7 @@ function _drawPosts() {
     })
   } else if (sort === 1) {
     ProxyState.posts.sort(function(a, b) {
-      return a.like - b.like
+      return b.dislike - a.dislike
     })
   } else if (sort === 2) {
     ProxyState.posts.sort(function(a, b) {
@@ -33,7 +45,7 @@ export class PostsController {
     ProxyState.on('posts', _drawPosts)
     ProxyState.on('account', _drawPosts)
     ProxyState.on('comments', _drawPosts)
-    ProxyState.on('sort', _drawPosts)
+    // ProxyState.on('sort', _drawPosts)
 
     this.getAllPosts()
   }
@@ -76,6 +88,10 @@ export class PostsController {
       }
       await postsService.createPost(newPost)
       formElem.reset()
+      Toast.fire({
+        icon: 'success',
+        title: 'Post created!'
+      })
     } catch (error) {
       logger.error('[error]', error)
     }
@@ -100,6 +116,10 @@ export class PostsController {
       })
       if (result.isConfirmed) {
         await postsService.deletePost(id)
+        Toast.fire({
+          icon: 'success',
+          title: 'Post deleted successfully!'
+        })
       } else {
 
       }
@@ -110,13 +130,16 @@ export class PostsController {
 
   mostLiked() {
     postsService.mostLiked()
+    _drawPosts()
   }
 
   mostDisliked() {
     postsService.mostDisliked()
+    _drawPosts()
   }
 
   mostRecent() {
     postsService.mostRecent()
+    _drawPosts()
   }
 }

@@ -19,8 +19,8 @@ function _drawAuthSettings() {
   const elem = document.getElementById('auth-settings')
   if (!elem) { return }
   elem.innerHTML = /* html */`
-  <div class="card p-2 elevation-4">
-    <div class="card-title p-2">
+  <div class="card auth p-2 elevation-4">
+    <div class="card-title auth p-2">
       <div class="d-flex align-items-center">
         <div class="avatar">
           <img src="https://avatars.githubusercontent.com/u/2824157?s=280&v=4" alt="user" height="45" class="rounded-circle">
@@ -68,19 +68,19 @@ function authButton(user) {
   if (AuthService.loading) { return '' }
   return user.isAuthenticated
     ? /* html */ `
-    <button class="btn btn-small btn-dark text-muted" onclick="app.authController.logout()">✖</button>
+    <button class="btn rounded-pill auth text-light text-muted" onclick="app.authController.logout()">✖</button>
   `
     : /* html */ `
-    <button class="btn btn-dark" onclick="app.authController.login()">login</button>
+    <button class="btn auth text-light m-3" onclick="app.authController.login()">Login</button>
   `
 }
 
 function avatarTemplate(user) {
   return user.isAuthenticated
     ? /* html */ `
-    <div class="mr-2">
-      <img class="rounded-circle" src="${user.picture}" alt="${user.name}" height="45"/>
-      <span class="mx-1">${user.name}</span>
+    <div class="mr-2 d-flex rounded-pill auth me-1 align-items-center">
+      <img class="rounded-circle ms-1" src="${user.picture}" alt="${user.name}" height="30"/>
+      <span class="text-light text-center me-3 mb-2 m-2">${user.name}</span>
       </div>`
     : AuthService.loading
       ? /* html */ `
