@@ -15,7 +15,10 @@ export class Post {
     <div class="col-10">
     <div id="post" class="card p-3 mb-4">
       <div>
-        <h4 class=" mb-0">${this.title}</h4>
+      <div class="d-flex justify-content-between">
+      <h4 class=" mb-0">${this.title}</h4>
+      <i class="mdi selectable2 grow mdi-24px mdi-close-thick me-2"></i>
+    </div>
         <p class="fst-italic text-secondary lighten-15 ">Posted by: UserName</p>
         <div class="d-flex justify-content-center mb-4">
                     <img class="rounded shadow" width="85%"
