@@ -13,6 +13,10 @@ export class PostsController {
     // this.createPost()
   }
 
+  async like(id) {
+    await postsService.like(id)
+  }
+
   async getAllPosts() {
     const posts = await postsService.getAllPosts()
     logger.log(posts)
@@ -27,13 +31,29 @@ export class PostsController {
         discussion: formElem.discussion.value,
         imgUrl: formElem.imgUrl.value,
         like: formElem.like.value,
-        dislike: formElem.like.value,
-        //gmapUrl: formElem.gmapUrl
+        dislike: formElem.like.value
+        // gmapUrl: formElem.gmapUrl
       }
       await postsService.creatPost(newPost)
       formElem.reset()
     } catch (error) {
       logger.error('[error]', error)
+    }
+  }
+
+  async editPost(id) {
+    try {
+      await postsService.editPost(id)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async deletePost(id) {
+    try {
+      await postsService.deletePost(id)
+    } catch (error) {
+      console.error(error)
     }
   }
 }
