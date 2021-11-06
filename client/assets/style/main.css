@@ -14124,6 +14124,10 @@ main {
   background-color: #A1CDA8;
 }
 
+.likedislike2 {
+  background-color: #6d8a72;
+}
+
 .arrowleft {
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
   background-color: #d6d6d6;
@@ -14138,6 +14142,48 @@ main {
 
 .commentsbutton {
   background-color: rgba(200, 200, 200, 0.671);
+}
+
+.scroll {
+  height: 82vh;
+  overflow-y: scroll;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #a8a8a8;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #627264;
+  border-radius: 10px;
+}
+
+.up {
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+}
+
+.up:hover {
+  top: -20px;
+}
+
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.1);
+}
+
+.img {
+  position: absolute;
+  bottom: 1vh;
+  left: 2vh;
 }
 
 /*# sourceMappingURL=main.css.map */
