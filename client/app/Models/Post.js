@@ -3,7 +3,7 @@ export class Post {
     this.id = data.id
     this.title = data.title
     this.discussion = data.discussion
-    this.imgUrl = data.imgUrl
+    this.imgUrl = data.imgUrl || ''
     this.like = data.like
     this.dislike = data.dislike
     // this.gmapUrl = data.gmapUrl
@@ -41,14 +41,14 @@ export class Post {
       </div>
       <div class="text-end">
         <p>
-          <a class="btn grow commentsbutton" data-bs-toggle="collapse" href="#comments" role="button"
+          <a class="btn grow commentsbutton" data-bs-toggle="collapse" href="#${this.id}" role="button"
             aria-expanded="false" aria-controls="collapseExample">
             View comments...
           </a>
         </p>
-        <div class="collapse" id="comments">
+        <div class="collapse" id="${this.id}">
 
-          <div class="collapse" id="comments">
+          <div class="collapse" id="${this.id}">
             <div class="me-5 mt-3  m-2">
               <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
                 placeholder="Enter your comment..." name="Enter your comment..." value="">
