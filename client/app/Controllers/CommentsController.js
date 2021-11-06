@@ -10,7 +10,7 @@ export class CommentsController {
 
   async getAllComments() {
     const comments = await commentsService.getAllComments()
-    logger.log(comments)
+    logger.log('these are the comments', comments)
   }
 
   // async createComment(newComment) {
