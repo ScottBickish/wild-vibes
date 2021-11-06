@@ -47,14 +47,14 @@ export class Post {
       </div>
       <div class="text-end">
         <p>
-          <a class="btn grow commentsbutton" data-bs-toggle="collapse" href="#${this.id}" role="button"
+          <a class="btn grow commentsbutton" data-bs-toggle="collapse" href="#a${this.id}a" role="button"
             aria-expanded="false" aria-controls="collapseExample">
             View comments...
           </a>
         </p>
-        <div class="collapse" id="${this.id}">
+        <div class="collapse" id="a${this.id}a">
 ${this.getComments()}
-          <div class="collapse" id="${this.id}">
+          <div class="collapse" id="a${this.id}a">
             <div class="me-5 mt-3  m-2">
               <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
                 placeholder="Enter your comment..." name="Enter your comment..." value="">
