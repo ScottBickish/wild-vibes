@@ -3,7 +3,7 @@ import { logger } from '../Utils/Logger.js'
 
 export class CommentsController {
   constructor() {
-    this.getAllComments()
+    // this.getAllComments()
     this.createComment()
   }
 
@@ -21,7 +21,7 @@ export class CommentsController {
       const formElem = window.event.target
       const newComment = {
         // @ts-ignore
-        comment: formElem.comment.value
+        comment: formElem.value
       }
       await commentsService.createComment(newComment)
       // @ts-ignore
