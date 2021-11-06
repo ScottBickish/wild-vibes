@@ -39,7 +39,10 @@ export class CommentsController {
 
   async deleteComment(id) {
     try {
-      await commentsService.deleteComment()
+      const postid = await commentsService.deleteComment(id)
+      const myCollapse = document.getElementById('a' + postid + 'a')
+      const bsCollapse = new bootstrap.Collapse(myCollapse)
+      bsCollapse.show()
     } catch (error) {
       logger.error('[error]', error)
     }
