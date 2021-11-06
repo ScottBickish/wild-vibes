@@ -3,6 +3,18 @@ import { Post } from '../Models/Post.js'
 import { commentsService } from '../Services/CommentsService.js'
 import { logger } from '../Utils/Logger.js'
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
 function _drawCommentsForPost(postId) {
   const comments = ProxyState.comments
   const found = comments.filter(c => c.postId === postId)
@@ -59,6 +71,10 @@ export class CommentsController {
       if (result.isConfirmed) {
         const postId = await commentsService.deleteComment(id)
         _drawCommentsForPost(postId)
+        Toast.fire({
+          icon: 'success',
+          title: 'Comment deleted successfully!'
+        })
       } else {
 
       }
