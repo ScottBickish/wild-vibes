@@ -8,11 +8,18 @@ function _drawPosts() {
   ProxyState.posts.forEach(post => { template += post.Template })
   document.getElementById('post').innerHTML = template
 }
+function _drawComments() {
+  let template = ''
+  ProxyState.comments.forEach(c => { template += c.Template })
+  document.getElementById('a' + ProxyState.posts.id + 'a').innerHTML = template
+}
 
 export class PostsController {
   constructor() {
     ProxyState.on('posts', _drawPosts)
     ProxyState.on('account', _drawPosts)
+    ProxyState.on('comments', _drawComments)
+
     this.getAllPosts()
     // this.createPost()
   }
