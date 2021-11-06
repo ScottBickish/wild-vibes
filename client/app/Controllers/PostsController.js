@@ -29,12 +29,12 @@ export class PostsController {
       const newPost = {
         title: formElem.title.value,
         discussion: formElem.discussion.value,
-        imgUrl: formElem.imgUrl.value,
-        like: formElem.like.value,
-        dislike: formElem.like.value
+        imgUrl: formElem.imgUrl.value
+        // like: formElem.like.value,
+        // dislike: formElem.like.value
         // gmapUrl: formElem.gmapUrl
       }
-      await postsService.creatPost(newPost)
+      await postsService.createPost(newPost)
       formElem.reset()
     } catch (error) {
       logger.error('[error]', error)

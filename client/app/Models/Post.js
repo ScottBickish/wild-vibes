@@ -3,7 +3,7 @@ export class Post {
     this.id = data.id
     this.title = data.title
     this.discussion = data.discussion
-    this.imgUrl = data.imgUrl
+    this.imgUrl = data.imgUrl || ''
     this.like = data.like
     this.dislike = data.dislike
     // this.gmapUrl = data.gmapUrl
