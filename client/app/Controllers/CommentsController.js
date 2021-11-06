@@ -3,8 +3,7 @@ import { logger } from '../Utils/Logger.js'
 
 export class CommentsController {
   constructor() {
-    // this.getAllComments()
-    this.createComment()
+    this.getAllComments()
   }
 
   async getAllComments() {
