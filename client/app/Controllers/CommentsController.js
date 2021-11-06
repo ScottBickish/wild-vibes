@@ -1,7 +1,16 @@
 import { ProxyState } from '../AppState.js'
+import { Post } from '../Models/Post.js'
 import { commentsService } from '../Services/CommentsService.js'
 import { logger } from '../Utils/Logger.js'
 
+function _drawCommentsForPost(postId) {
+  const comments = ProxyState.comments
+  let template = ''
+  comments.forEach(c => { template += c.Template })
+  template += Post.commentForm(postId)
+  const myCollapse = document.getElementById('a' + postId + 'a')
+  myCollapse.innerHTML = template
+}
 export class CommentsController {
   constructor() {
     this.getAllComments()
@@ -39,10 +48,10 @@ export class CommentsController {
 
   async deleteComment(id) {
     try {
-      const postid = await commentsService.deleteComment(id)
-      const myCollapse = document.getElementById('a' + postid + 'a')
-      const bsCollapse = new bootstrap.Collapse(myCollapse)
-      bsCollapse.show()
+      const postId = await commentsService.deleteComment(id)
+      _drawCommentsForPost(postId)
+      // const bsCollapse = new bootstrap.Collapse(myCollapse)
+      // bsCollapse.show()
     } catch (error) {
       logger.error('[error]', error)
     }

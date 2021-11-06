@@ -54,7 +54,6 @@ export class Post {
         </p>
         <div class="collapse " id="a${this.id}a">
 ${this.getComments()}
-          
             <div class="me-5 mt-3  m-2">
             <form onsubmit="app.commentsController.createComment('${this.id}')">
               <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
@@ -75,5 +74,14 @@ ${this.getComments()}
     let template = ''
     comments.forEach(c => { template += c.Template })
     return template
+  }
+
+  static commentForm(id) {
+    return `<div class="me-5 mt-3  m-2">
+    <form onsubmit="app.commentsController.createComment('${id}')">
+      <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
+        placeholder="Enter your comment..." name="comment" value="">
+      <label for="floatingInputValue"></label>
+      </form>`
   }
 }
