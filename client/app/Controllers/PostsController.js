@@ -12,6 +12,7 @@ function _drawPosts() {
 export class PostsController {
   constructor() {
     ProxyState.on('posts', _drawPosts)
+    ProxyState.on('account', _drawPosts)
     this.getAllPosts()
     // this.createPost()
   }
@@ -58,9 +59,11 @@ export class PostsController {
 
   async deletePost(id) {
     try {
-      await postsService.deletePost(id)
+      if (window.confirm('Are you sure you want to delete this Discussion?')) {
+        await postsService.deletePost(id)
+      }
     } catch (error) {
-      console.error(error)
+      logger.log('[Delete error]', error)
     }
   }
 }

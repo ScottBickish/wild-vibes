@@ -1,4 +1,8 @@
 import { ProxyState } from '../AppState.js'
+<<<<<<< HEAD
+=======
+
+>>>>>>> ac37edaf72251269a5f927160e4220a4d539f626
 export class Post {
   constructor(data) {
     this.id = data.id
@@ -8,7 +12,8 @@ export class Post {
     this.like = data.like
     this.dislike = data.dislike
     // this.gmapUrl = data.gmapUrl
-    this.creatorName = data.creator.name // what did they use??
+    this.creatorName = data.creator.name
+    this.creatorId = data.creatorId
   }
 
   get Template() {
@@ -16,7 +21,10 @@ export class Post {
     <div class="col-10">
     <div id="post" class="card p-3 mb-4">
       <div>
-        <h4 class=" mb-0">${this.title}</h4>
+      <div class="d-flex justify-content-between">
+      <h4 class=" mb-0">${this.title}</h4>
+      <i onclick="app.postsController.deletePost('${this.id}')" class="mdi selectable2 grow ${ProxyState.account.id === this.creatorId ? '' : 'visually-hidden'} mdi-24px mdi-close-thick me-2"></i>
+    </div>
         <p class="fst-italic text-secondary lighten-15 ">Posted by: UserName</p>
         <div class="d-flex justify-content-center mb-4">
                     <img class="rounded shadow" width="85%"
