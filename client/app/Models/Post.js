@@ -22,7 +22,7 @@ export class Post {
       <h4 class=" mb-0">${this.title}</h4>
       <i onclick="app.postsController.deletePost('${this.id}')" class="mdi selectable2 grow ${ProxyState.account.id === this.creatorId ? '' : 'visually-hidden'} mdi-24px mdi-close-thick me-2"></i>
     </div>
-        <p class="fst-italic text-secondary lighten-15 ">Posted by: UserName</p>
+        <p class="fst-italic text-secondary lighten-15 ">Posted by: ${this.creatorName}</p>
         <div class="d-flex justify-content-center mb-4">
                     <img class="rounded shadow" width="85%"
                       src="${this.imgUrl}"
