@@ -25,7 +25,7 @@ export class Post {
       <i onclick="app.postsController.deletePost('${this.id}')" class="mdi selectable2 grow ${ProxyState.account.id === this.creatorId ? '' : 'visually-hidden'} mdi-24px mdi-close-thick me-2"></i>
     </div>
         <p class="fst-italic text-secondary lighten-15 ">Posted by: ${this.creatorName}</p>
-        <div class="text-end pe-2">
+        <div class="text-end pe-2 ${this.gmapUrl ? '' : 'visually-hidden'}">
         <a href="${this.gmapUrl}" target="_blank">
           link to Google Maps</a>
       </div>

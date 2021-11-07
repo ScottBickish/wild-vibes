@@ -120,8 +120,6 @@ export class PostsController {
           icon: 'success',
           title: 'Post deleted successfully!'
         })
-      } else {
-
       }
     } catch (error) {
       logger.log('[Delete error]', error)
