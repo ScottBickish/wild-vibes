@@ -24,15 +24,17 @@ export class Post {
       <h4 class=" mb-0">${this.title}</h4>
       <i onclick="app.postsController.deletePost('${this.id}')" class="mdi selectable2 grow ${ProxyState.account.id === this.creatorId ? '' : 'visually-hidden'} mdi-24px mdi-close-thick me-2"></i>
     </div>
+    <div class="d-flex justify-content-between ${this.gmapUrl ? 'mb-3' : ''} ">
         <p class="fst-italic text-secondary lighten-15 ">Posted by: ${this.creatorName}</p>
-        <div class="pe-2 ${this.gmapUrl ? '' : 'visually-hidden'}">
-        <a href="${this.gmapUrl}" target="_blank">
-          link to Google Maps</a>
+        <div class=" ${this.gmapUrl ? '' : 'visually-hidden'}">
+        <a href="${this.gmapUrl}" target="_blank"><i class="mdi mdi-24px mdi-map-marker-radius text end me-4 ">Check out this location!</i></a>
       </div>
+      </div>
+
         <div class="d-flex justify-content-center mb-4">
           <img class="rounded shadow" width="85%" src="${this.imgUrl}" alt="">
         </div>
-        <p> ${this.discussion}</p>
+        <p class=" me-3 ms-3"> ${this.discussion}</p>
       </div>
       <div class="d-flex pt-2 align-items-center">
 
