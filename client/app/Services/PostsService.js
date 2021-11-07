@@ -16,9 +16,10 @@ class PostsService {
     logger.log(res.data)
   }
 
-  async editPost(newData, id) {
-    const res = await api.put('api/wildvibes/posts/' + id, newData)
+  async editPost(editedPost, id) {
+    const res = await api.put('api/wildvibes/posts/' + id, editedPost)
     logger.log(res.data)
+    this.getAllPosts()
   }
 
   async deletePost(id) {

@@ -22,7 +22,10 @@ export class Post {
       <div>
       <div class="d-flex justify-content-between">
       <h4 class=" mb-0">${this.title}</h4>
-      <i onclick="app.postsController.deletePost('${this.id}')" class="mdi selectable2 grow ${ProxyState.account.id === this.creatorId ? '' : 'visually-hidden'} mdi-24px mdi-close-thick me-2"></i>
+      <div>
+
+      <i onclick="app.postsController.deletePost('${this.id}')" class="mdi selectable2  ${ProxyState.account.id === this.creatorId ? '' : 'visually-hidden'} mdi-24px grow mdi-close-thick me-2"></i>
+      </div>
     </div>
     <div class="d-flex justify-content-between ${this.gmapUrl ? 'mb-3' : ''} ">
         <p class="fst-italic text-secondary lighten-15 ">Posted by: ${this.creatorName}</p>
@@ -91,3 +94,46 @@ ${this.getComments()}
       </form>`
   }
 }
+
+// <form onsubmit="app.postsController.editPost('${this.id}')">
+// <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+//   aria-labelledby="staticBackdropLabel" aria-hidden="true">
+//   <div class="modal-dialog">
+//     <div class="modal-content">
+//       <div class="modal-header">
+//         <h5 class="modal-title" id="staticBackdropLabel">Editing your post</h5>
+//         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//       </div>
+//       <div class="modal-body">
+//       <div class="d-flex">
+//       <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
+//         placeholder="Edit your Title" name="title" value="${ProxyState.posts.find(p => p.id === this.idid).title}">
+//       <label for="floatingInputValue"></label>
+//     </div>
+//     <div class="d-flex">
+//       <input type="text" class="form-control m-3 ms-3 me-2" id="floatingInputValue"
+//         placeholder="Edit Image Url" name="imgUrl" value="">
+//       <label for="floatingInputValue"></label>
+
+//       <input type="text" class="form-control m-3 ms-1 me-4" id="floatingInputValue"
+//         placeholder="Edit Google Maps Url" name="gmapUrl" value="">
+//       <label for="floatingInputValue"></label>
+//     </div>
+
+//     <div class="m-3 me-4">
+//       <div class="form-floating">
+//         <textarea name="discussion" class="form-control" placeholder="Leave a comment here"
+//           id="floatingTextarea2" style="height: 100px"></textarea>
+//         <label for="floatingTextarea2">Edit your Discussion</label>
+//       </div>
+//     </div>
+//       </div>
+//       <div class="modal-footer">
+//         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+//         <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Save Changes</button>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+// </form>
+// <i type="button" class="mdi-24px mdi mdi-pencil selectable2 grow ${ProxyState.account.id === this.creatorId ? '' : 'visually-hidden'}" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>

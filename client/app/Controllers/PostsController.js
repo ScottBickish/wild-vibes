@@ -18,15 +18,15 @@ function _drawPosts() {
   let template = ''
   const sort = ProxyState.sort
   if (sort === 0) {
-    ProxyState.posts.sort(function (a, b) {
+    ProxyState.posts.sort(function(a, b) {
       return b.like - a.like
     })
   } else if (sort === 1) {
-    ProxyState.posts.sort(function (a, b) {
+    ProxyState.posts.sort(function(a, b) {
       return b.dislike - a.dislike
     })
   } else if (sort === 2) {
-    ProxyState.posts.sort(function (a, b) {
+    ProxyState.posts.sort(function(a, b) {
       return b.serial - a.serial
     })
   }
@@ -72,7 +72,7 @@ export class PostsController {
       window.event.preventDefault()
       const formElem = window.event.target
       let last = 0
-      ProxyState.posts.sort(function (a, b) {
+      ProxyState.posts.sort(function(a, b) {
         return a.serial - b.serial
       })
       for (let i = 0; i < ProxyState.posts.length; i++) {
@@ -99,9 +99,21 @@ export class PostsController {
 
   async editPost(id) {
     try {
-      await postsService.editPost(id)
+      window.event.preventDefault()
+      const formElem = window.event.target
+      const editedPost = {
+        title: formElem.title.value ? formElem.title.value : ProxyState.posts.find(p => p.id === id).title,
+        discussion: formElem.discussion.value ? formElem.discussion.value : ProxyState.posts.find(p => p.id === id).discussion,
+        imgUrl: formElem.imgUrl.value ? formElem.imgUrl.value : ProxyState.posts.find(p => p.id === id).imgUrl,
+        gmapUrl: formElem.gmapUrl.value ? formElem.gmapUrl.value : ProxyState.posts.find(p => p.id === id).gmapUrl
+      }
+      await postsService.editPost(editedPost, id)
+      Toast.fire({
+        icon: 'success',
+        title: 'Post edited!'
+      })
     } catch (error) {
-      console.error(error)
+      logger.error(error)
     }
   }
 
