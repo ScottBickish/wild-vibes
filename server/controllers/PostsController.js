@@ -14,6 +14,7 @@ export class PostsController extends BaseController {
       .put('/:id/dislike', this.dislike)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
+      .put('/:id', this.edit)
       .delete('/:id', this.remove)
   }
 
@@ -83,6 +84,17 @@ export class PostsController extends BaseController {
       const postId = req.params.id
       await postsService.remove(postId, userId)
       res.send('you have deleted this post forever')
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async edit(req, res, next) {
+    try {
+      req.body.creatorId = req.userInfo.id
+      req.body.id = req.params.id
+      const post = await postsService.edit(req.body)
+      return res.send(post)
     } catch (error) {
       next(error)
     }

@@ -47,5 +47,14 @@ class PostsService {
     }
     await dbContext.Posts.findByIdAndDelete(postId)
   }
+
+  async edit(body) {
+    const post = await this.getById(body.id)
+    if (post.creatorId.toString() !== body.creatorId) {
+      throw new Forbidden('you do not have the credentials to edit this post')
+    }
+    const updatedPost = dbContext.Posts.findOneAndUpdate({ _id: body.id }, body, { new: true })
+    return await updatedPost
+  }
 }
 export const postsService = new PostsService()
