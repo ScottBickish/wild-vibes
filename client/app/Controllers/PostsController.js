@@ -34,12 +34,6 @@ function _drawPosts() {
   document.getElementById('post').innerHTML = template
 }
 
-// function _drawComments() {
-//   let template = ''
-//   ProxyState.comments.forEach(c => { template += c.Template })
-// }
-// function _drawLikes()
-
 export class PostsController {
   constructor() {
     ProxyState.on('posts', _drawPosts)

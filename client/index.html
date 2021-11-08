@@ -10,14 +10,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/style/main.css">
-  <title>wild-vibes</title>
+  <title>WildVibes</title>
 </head>
 
 <body>
   <header class="container-fluid">
     <div class="row headnav justify-content-between">
       <div class="col-5 d-flex  align-items-center">
-        <img class="ms-3" src="./assets/img/logofull.png" height="120vh" alt="">
+        <img class="ms-3 " src="./assets/img/logofull.png" height="120vh" alt="">
       </div>
       <div class="col-3">
         <div class=" border-0 rounded-pill flex-row justify-content-end text-center d-flex m-4" id="authstate">
@@ -52,11 +52,11 @@
             </div>
           </div>
         </div>
-        <div class="col-10 scroll scrollbar">
+        <div class="col-10  scroll scrollbar">
           <div class="row ">
             <div class="col-8">
               <div class="card shadow pt-3 m-4">
-                <form onsubmit="app.postsController.createPost()">
+                <form id=" posttop" onsubmit="app.postsController.createPost()">
                   <div class="d-flex">
                     <input type="text" class="form-control m-3 ms-3" id="floatingInputValue"
                       placeholder="Enter your title..." name="title" value="">

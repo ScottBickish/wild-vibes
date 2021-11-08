@@ -9,7 +9,12 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-color: #EAE0CC;
+  scroll-behavior: smooth;
 }
+html {
+  scroll-behavior: smooth;
+}
+
 
 main {
   flex-grow: 1;
